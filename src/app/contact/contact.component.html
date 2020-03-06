@@ -1,0 +1,16 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <input type="text" name="name" placeholder="Name" formControlName="name" />
+  <input type="text" name="email" placeholder="Email" formControlName="email" />
+  <input
+    type="text"
+    name="subject"
+    placeholder="Subject"
+    formControlName="subject"
+  />
+  <textarea
+    name="message"
+    placeholder="Message"
+    formControlName="message"
+  ></textarea>
+  <button type="submit" class="btn btn-large">Send message</button>
+</form>
