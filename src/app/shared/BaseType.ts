@@ -1,7 +1,7 @@
 export enum BaseType {
-  STRING = "STRING",
-  FLOAT = "FLOAT",
-  INTEGER = "INTEGER",
-  BOOLEAN = "BOOLEAN"
+  STRING = "unique",
+  FLOAT = "not null",
+  INTEGER = "min length",
+  BOOLEAN = "max length"
 };
-// 
+//

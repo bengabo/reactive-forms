@@ -11,16 +11,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let entity of entities; index as index">
-
             <td style="width:50%">
               <editable (update)="updateField(index, 'name')">
                 <ng-template viewMode>{{ entity.name }}</ng-template>
                 <ng-template editMode>
-                  <input
-                    [formControl]="getControl(index, 'name')"
-                    focusable
-                    editableOnEnter
-                  />
+                  <input [formControl]="getControl(index, 'name')" focusable editableOnEnter />
                 </ng-template>
               </editable>
             </td>
@@ -30,31 +25,38 @@
                 <editable (update)="updateField(index, 'isAdmin')">
                   <ng-template viewMode>{{ entity.isAdmin }}</ng-template>
                   <ng-template editMode>
-                    <input
-                      type="checkbox"
-                      [formControl]="getControl(index, 'isAdmin')"
-                    />{{ entity.isAdmin }}
+                    <input type="checkbox" [formControl]="getControl(index, 'isAdmin')" />{{ entity.isAdmin }}
                   </ng-template>
                 </editable>
               </button>
             </td>
 
             <td style="width:50%">
-              <span *ngIf="keysTypes">
-                <editable multiple (update)="updateField(index, 'constraint')">
-                  <span>
-                      <ng-template *ngFor="let key of keysTypes; let i = index" value="option" viewMode>{{ entity.constraint }}</ng-template>
-                        <ng-template editMode >
-                        <input
-                          [formControl]="getControl(index, 'constraint')"
-                          focusable
-                          editableOnEnter
-                        />
-                      </ng-template>
-                  </span>
-                </editable>
-              </span>
+              <editable (update)="updateField(index, 'constraint')">
+                <ng-template *ngFor="let constraint of constraints;
+                    let i = index" value="option" viewMode>{{ contraintKeyToDisplay(entity.constraint) }}
+                </ng-template>
+                <ng-template editMode>
+                  <select [formControl]="getControl(index, 'constraint')" focusable editableOnEnter>
+                    <option *ngFor="let constraint of constraints; let i = index" [value]="constraint.value">
+                      {{ constraint.viewValue }}</option>
+                  </select>
+                </ng-template>
+              </editable>
             </td>
+
+            <!-- <td style="width:50%">
+              <mat-form-field>
+                <mat-label>{{ entity.constraint }}</mat-label>
+                <mat-select>
+                  <mat-option
+                    *ngFor="let constraint of constraints; let i = index"
+                    [value]="constraint.value"
+                    >{{ constraint.viewValue }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </td> -->
 
           </tr>
         </tbody>
