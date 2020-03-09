@@ -6,6 +6,7 @@
           <tr>
             <th>Name</th>
             <th>Admin</th>
+            <th>Types</th>
             <th>Constraints</th>
           </tr>
         </thead>
@@ -32,9 +33,23 @@
             </td>
 
             <td style="width:50%">
+              <editable (update)="updateField(index, 'type')">
+                <ng-template *ngFor="let type of types;
+                  let i = index" value="option" viewMode>{{ typeKeyToDisplay(entity.type) }}
+                </ng-template>
+                <ng-template editMode>
+                  <select [formControl]="getControl(index, 'type')" focusable editableOnEnter>
+                    <option *ngFor="let type of types; let i = index" [value]="type.value">
+                      {{ type.viewValue }}</option>
+                  </select>
+                </ng-template>
+              </editable>
+            </td>
+
+            <td style="width:50%">
               <editable (update)="updateField(index, 'constraint')">
                 <ng-template *ngFor="let constraint of constraints;
-                    let i = index" value="option" viewMode>{{ contraintKeyToDisplay(entity.constraint) }}
+                    let i = index" value="option" viewMode>{{ constraintKeyToDisplay(entity.constraint) }}
                 </ng-template>
                 <ng-template editMode>
                   <select [formControl]="getControl(index, 'constraint')" focusable editableOnEnter>
