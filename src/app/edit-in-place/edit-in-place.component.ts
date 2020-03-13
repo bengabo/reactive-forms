@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, QueryList } from "@angular/core";
 import { FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 import { ATTRIBUTES } from "../mock-attributes";
 import { BaseType } from "../shared/BaseType";
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 interface Constraint {
   value: string;
@@ -41,7 +42,7 @@ export class EditInPlaceComponent {
     const toGroups = this.entities.map(entity => {
       return new FormGroup({
         name: new FormControl(entity.name, Validators.required),
-        isAdmin: new FormControl(entity.isAdmin),
+        // isAdmin: new FormControl(entity.isAdmin),
         type: new FormControl(entity.type),
         constraint: new FormControl(entity.constraint)
       });
@@ -83,5 +84,5 @@ export class EditInPlaceComponent {
 
   constructor() {}
 
-  keysTypes = Object.keys(BaseType);
+  keysTypes = Object.keys(BaseType)
 }
