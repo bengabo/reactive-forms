@@ -3,6 +3,11 @@ import { BrowserModule } from "@angular/platform-browser";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { AppComponent } from "./app.component";
 import { EditableComponent } from "./editable/editable.component";
@@ -17,21 +22,26 @@ import { MaterialModule } from './material-module';
 @NgModule({
   declarations: [
     AppComponent,
-    EditInPlaceComponent,
-    EditableComponent,
-    ViewModeDirective,
-    EditModeDirective,
     CheckboxComponent,
-    FocusableDirective,
+    EditableComponent,
     EditableOnEnterDirective,
+    EditInPlaceComponent,
+    EditModeDirective,
+    FocusableDirective,
+    ViewModeDirective,
   ],
   imports: [
-    MaterialModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatInputModule,
+    MaterialModule,
+    MatSelectModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent]
 })
